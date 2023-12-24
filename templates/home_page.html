@@ -1,0 +1,96 @@
+{% load static %}
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <link href="{% static 'style.css' %}" type="text/css" rel="stylesheet">
+        <style>
+
+           ul
+           {
+                list-style: none;
+           }
+           ul li
+           {
+                margin: 0 1rem;
+           }
+            #saved_lyrics_div
+            {
+                margin-right: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <div id="saved_lyrics_div" class="d-flex justify-content-center align-items-center row">
+                <h2 class="text-center my-4">Saved Lyrics</h2>
+                <div class="d-flex justify-content-center align-items-center row" id="filter_div">
+                    <h3 class="text-center">Filter
+                    </h3>
+                    <div class="col-10 row">
+                        <div class="col-md-4 col-12">
+                            <p>Type</p>
+                            <button id="song_lyric">Song Lyric</button>
+                            <button id="poem">Poem</button>
+                            <button id="quote">Quote</button>
+                        </div>
+                        <div class="col-md-4 col-12">
+                            <p>Language</p>
+                            <button id="hindi">Hindi</button>
+                            <button id="english">English</button>
+                        </div>
+                        <div class="col-md-4 col-12">
+                            <p>Mood</p>
+                        </div>
+                        <a class="my-4 text-center" onclick="set_button_defautl()">
+                            Reset Filter
+                        </a>
+                    </div>
+                </div>
+                <div class="col-10 align-items-center">
+                    <ul class="row align-items-center d-flex justify-content-center">
+                        {% for lyric in all_lyrics %}
+                        <li class="col-12 col-md-6 col-lg-3 my-4 {{lyric.get_class_list}}">
+                            <div class="lyric_card row p-4 flex justify-content-center">
+                                <img class="col-4" src="{{lyric.song_image_url}}">
+                                <div class="col-8">
+                                    <a href="{% url 'full_lyric' pk=lyric.id %}">
+                                        <h4>{{lyric.song_name}}</h4>
+                                    </a>
+                                    <p>{{lyric.song_artist}}</p>
+                                </div>
+                                <p class="font-italic col-12 mt-3">{{lyric.song_lyrics|safe|truncatechars:200}}</p>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <a href="{% url 'add_lyric' %}" class="text-center">
+                    <button class="col-4 my-5">
+                        Add More
+                    </button>
+                </a>
+            </div>
+            </div>
+    </body>
+    <script>
+        function set_button_defautl(){
+            $("#filter_div button").css("background-color","white");
+            var listItems = $("ul li");
+            listItems.each(function(idx, li) {
+                $(li).show();
+            });
+        }
+        $("#filter_div button").click(function(){
+            $(this).css("background-color", "#4c49ea");
+            var listItems = $("ul li");
+            var filter_id = $(this).attr('id');
+            listItems.each(function(idx, li) {
+                if($(this).hasClass(filter_id) == false){
+                    $(this).hide();
+                }
+            });
+        })
+    </script>
+</html>

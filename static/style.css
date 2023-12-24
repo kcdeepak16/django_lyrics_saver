@@ -1,0 +1,99 @@
+@font-face {
+  font-family: main_font;
+ src: url('/static/bold_font.otf');
+}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+
+
+body{
+    font-family: main_font !important;
+}
+
+body
+{
+    background-color: #000;
+    color: white;
+}
+
+h1
+{
+    font-family: main_font;
+    font-size: 5rem;
+}
+body{
+font-family: "Poppins", sans-serif;
+font-weight: 300;
+}
+
+.height{
+height: 100vh;
+}
+
+
+.search{
+position: relative;
+box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+width: 100%;
+}
+
+.search input{
+
+height: 60px;
+text-indent: 25px;
+border: 2px solid white;
+
+
+}
+
+
+.search input:focus{
+
+box-shadow: none;
+border: 2px solid blue;
+
+
+}
+
+.search .fa-search{
+
+position: absolute;
+top: 20px;
+left: 16px;
+
+}
+
+.search a{
+
+position: absolute;
+top: 5px;
+right: 5px;
+height: 50px;
+width: 110px;
+background: blue;
+margin: auto;
+}
+
+li
+{
+    background-color: #121212;
+    border-radius: 1rem;
+}
+
+li div > img
+{
+    width: 3rem;
+    height: 5rem;
+    object-fit: contain;
+}
+
+#filter_div button, button
+{
+    width: 7rem;
+    margin: 1rem 0;
+    padding: .5rem 0;
+    outline: none;
+    border: none;
+    border-radius: .5rem;
+    background-color: white;
+    color: black;
+}

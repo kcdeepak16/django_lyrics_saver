@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @font-face {
+            font-family: main_font;
+            src: url('/static/bold_font.otf');
+        }
+        body
+        {
+              font-family: main_font !important;
+        }
+        input, textarea, select
+        {
+            margin: 1rem 0 !important;
+        }
+        textarea
+        {
+            height: 8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="row d-flex justify-content-center align-items-center my-5">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <a href="{% url 'home_page' %}" class="text-center">Home</a>
+        <h2 class="text-center">
+            Add Lyrics/Poem/Quote
+        </h2>
+        <form class="align-items-center justify-content-center" method="post" >
+            {% csrf_token %}
+          <div class="form-group row px-5 my-3 d-flex items-align-center justify-content-center">
+              <div class="d-none">{{lyric_form.user.label}}{{lyric_form.user}}</div>
+            <div class="col-md-5 col-10">
+                {{lyric_form.song_name.label}}
+                {{lyric_form.song_name}}
+            </div>
+              <div class="col-md-5 col-10">
+                {{lyric_form.song_artist.label}}
+                {{lyric_form.song_artist}}
+            </div>
+          </div>
+          <div class="form-group row px-5 my-3 d-flex items-align-center justify-content-center">
+              <div class="col-10">
+                {{lyric_form.song_lyrics.label}}
+                {{lyric_form.song_lyrics}}
+            </div>
+          </div>
+          <div class="form-group row px-5 my-3 d-flex items-align-center justify-content-center">
+                <div class="col-10">
+                    {{lyric_form.song_image_url.label}}
+                    {{lyric_form.song_image_url}}
+                </div>
+          </div>
+          <div class="form-group row px-5 my-3 d-flex items-align-center justify-content-center">
+              <div class="col-md-5 col-10">
+                {{lyric_form.language.label}}
+                {{lyric_form.language}}
+              </div>
+              <div class="col-md-5 col-10">
+                {{lyric_form.type.label}}
+                {{lyric_form.type}}
+            </div>
+          </div>
+          <div class="form-group row px-5 my-3 d-flex items-align-center justify-content-center">
+                <div class="col-10">
+                    {{lyric_form.tags.label}}
+                    {{lyric_form.tags}}
+                </div>
+          </div>
+            <div class="row d-flex items-align-center justify-content-center">
+                 <button type="submit" class="btn btn-primary col-4">Submit</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        $("input, textarea, select").addClass("form-control");
+        $("input, textarea, select").css("border", "solid 1px black");
+    </script>
+</body>
+</html>
