@@ -18,7 +18,7 @@ class LyricsForm(forms.ModelForm):
         fields = ['user','song_name', 'song_artist', 'song_lyrics', 'song_image_url', 'language', 'type', 'tags']
 
 def home_page(request):
-    all_lyrics = lyrics.objects.all()
+    all_lyrics = lyrics.objects.filter(user=request.user.id)
     return render(request, 'home_page.html', {'all_lyrics': all_lyrics})
 
 def add_lyric(request):

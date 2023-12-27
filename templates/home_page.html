@@ -55,7 +55,7 @@
                             <div class="lyric_card row p-4 flex justify-content-center">
                                 <img class="col-4" src="{{lyric.song_image_url}}">
                                 <div class="col-8">
-                                    <a href="{% url 'full_lyric' pk=lyric.id %}">
+                                    <a style="text-decoration: none; color: white;" href="{% url 'full_lyric' pk=lyric.id %}">
                                         <h4>{{lyric.song_name}}</h4>
                                     </a>
                                     <p>{{lyric.song_artist}}</p>

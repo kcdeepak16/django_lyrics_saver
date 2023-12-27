@@ -16,7 +16,7 @@ class lyrics(models.Model):
     tags=models.CharField(max_length=100, blank=True)
 
     def get_class_list(self):
-        type_dict = {"Song Lyrics": "song_lyric", "Poetry": "poetry", "Quote": "quote"}
+        type_dict = {"Song Lyrics": "song_lyric", "Poetry": "poem", "Quote": "quote"}
         return type_dict[self.type] + " " + self.language.lower()
 
     def __str__(self):
